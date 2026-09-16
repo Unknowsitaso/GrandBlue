@@ -1,3 +1,4 @@
+--hi you can upgrade it, it took me 30 minutes to make but only use for auto mine so i could make some money selling items from this game
 local CoreGui = game:GetService("CoreGui")
 local StarterGui = game:GetService("StarterGui")
 local Players = game:GetService("Players")
@@ -12,20 +13,6 @@ local HttpService = game:GetService("HttpService")
 local LocalPlayer = Players.LocalPlayer
 local Camera = workspace.CurrentCamera
 
-local function SendWebhook(msg)
-    if WEBHOOK_URL == "" then return end
-    local req = (syn and syn.request) or (http and http.request) or http_request or (fluxus and fluxus.request) or request
-    if req then
-        pcall(function()
-            req({
-                Url = WEBHOOK_URL,
-                Method = "POST",
-                Headers = {["Content-Type"] = "application/json"},
-                Body = HttpService:JSONEncode({content = msg})
-            })
-        end)
-    end
-end
 
 local DiscordLink = "https://discord.gg/vfmjNqSwWM"
 
@@ -91,8 +78,6 @@ getgenv().AntiAdminEnabled = CurrentConfig.AntiAdmin -- Carga el valor guardado
 getgenv().TargetZone = "Todos"
 
 local UIToggles = {}
-
-SendWebhook("✅ **Script Ejecutado** | Jugador: " .. LocalPlayer.Name .. " | Anti-Admin: " .. (getgenv().AntiAdminEnabled and "ON" or "OFF"))
 
 local function CreateSkyBase()
     local baseName = "CustomAutoFarmBase_Sky"
